@@ -11,6 +11,15 @@ function App(){
   //state가 바뀌면 HTML이 재렌더링 된다. 새로고침 없이
   let [modal, modal변경] = useState(false)
 
+  function 반복된UI() {
+    var 어레이 = []
+    for (let i = 0; i<3; i++) {
+      어레이.push(<div>안녕</div>)
+    }
+    return 어레이
+  }
+
+
 
   function 제목바꾸기() {
     var newArray = [...글제목]
@@ -25,7 +34,7 @@ function App(){
         <div>개발 blog</div>
       </div>
       {/* <button onClick={제목바꾸기}>버튼</button> */}
-      <div className="list">
+      {/* <div className="list">
         <h3>{ 글제목[0] } <span onClick={()=> { 따봉변경(따봉+1) }} >👍</span> {따봉} </h3>
         <p>2월 17일 발행</p>
         <hr/>
@@ -39,8 +48,26 @@ function App(){
         <h3>{ 글제목[2] }</h3>
         <p>2월 17일 발행</p>
         <hr/>
-      </div> 
+      </div>  */}
        <button onClick={()=>{modal변경(!modal)}}>모달</button>
+
+       { 반복된UI() }
+
+      {
+
+        글제목.map((글) => {
+          return  (
+            <div className="list">
+              <h3>{ 글 } <span onClick={()=> { 따봉변경(따봉+1) }} >👍</span>{따봉}</h3>
+              <p>2월 17일 발행</p>
+              <hr/>
+            </div> 
+          )
+
+        })
+
+      }
+
 
        {
          modal === true 
