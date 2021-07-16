@@ -9,6 +9,7 @@ function App(){
   let [글제목, 글제목변경] = useState( ['남자코트 추천', '강남 우동맛집', '파이썬 독학'] );
   let [따봉, 따봉변경] =  useState(0)
   //state가 바뀌면 HTML이 재렌더링 된다. 새로고침 없이
+  let [modal, modal변경] = useState(false)
 
 
   function 제목바꾸기() {
@@ -39,8 +40,13 @@ function App(){
         <p>2월 17일 발행</p>
         <hr/>
       </div> 
-       
-      <Modal />
+       <button onClick={()=>{modal변경(!modal)}}>모달</button>
+
+       {
+         modal === true 
+         ? <Modal/>
+         : null
+       }
 
     </div>
   )
