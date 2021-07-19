@@ -11,6 +11,7 @@ function App(){
   //state가 바뀌면 HTML이 재렌더링 된다. 새로고침 없이
   let [modal, modal변경] = useState(false)
 
+
   function 반복된UI() {
     var 어레이 = []
     for (let i = 0; i<3; i++) {
@@ -18,6 +19,8 @@ function App(){
     }
     return 어레이
   }
+
+
 
 
 
@@ -58,7 +61,7 @@ function App(){
         글제목.map((글) => {
           return  (
             <div className="list">
-              <h3>{ 글 } <span onClick={()=> { 따봉변경(따봉+1) }} >👍</span>{따봉}</h3>
+              <h3 >{ 글 }  <span onClick={()=> { 따봉변경(따봉+1) }} >👍</span>{따봉}</h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div> 
@@ -71,7 +74,7 @@ function App(){
 
        {
          modal === true 
-         ? <Modal/>
+         ? <Modal 글제목={글제목}/>
          : null
        }
 
@@ -80,10 +83,10 @@ function App(){
 }
 
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-      <h2>제목</h2>
+      <h2>제목 {props.글제목[1]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div> 
