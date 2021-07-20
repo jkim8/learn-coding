@@ -11,15 +11,16 @@ function App(){
   //state가 바뀌면 HTML이 재렌더링 된다. 새로고침 없이
   let [modal, modal변경] = useState(false)
   let [누른제목, 누른제목변경] = useState(0)
+  let [입력값, 입력값변경] = useState('')
 
 
-  function 반복된UI() {
-    var 어레이 = []
-    for (let i = 0; i<3; i++) {
-      어레이.push(<div>안녕</div>)
-    }
-    return 어레이
-  }
+  // function 반복된UI() {
+  //   var 어레이 = []
+  //   for (let i = 0; i<3; i++) {
+  //     어레이.push(<div>안녕</div>)
+  //   }
+  //   return 어레이
+  // }
 
 
 
@@ -53,15 +54,16 @@ function App(){
         <p>2월 17일 발행</p>
         <hr/>
       </div>  */}
-       <button onClick={()=>{modal변경(!modal)}}>모달</button>
 
-       { 반복된UI() }
+ 
+
+       {/* { 반복된UI() } */}
 
       {
 
         글제목.map((글, i) => {
           return  (
-            <div className="list">
+            <div className="list" key={i}>
               <h3 onClick={ ()=> { 누른제목변경(i) }} >{ 글 }  <span onClick={()=> { 따봉변경(따봉+1) }} >👍</span>{따봉}</h3>
               <p>2월 17일 발행</p>
               <hr/>
@@ -71,6 +73,21 @@ function App(){
         })
 
       }
+
+
+      <div className="publish">
+        <input onChange={ (e)=> { 입력값변경(e.target.value) } } />
+        <button onClick={ ()=> { 
+          var arrayCopy = [...글제목]
+          arrayCopy.unshift(입력값)
+          글제목변경( arrayCopy )
+         } } >저장</button>
+      </div>
+
+        {/* {입력값} */}
+        {/* <input onChange={ (e)=> {입력값변경(e.target.value)} } /> */}
+
+       <button onClick={()=>{modal변경(!modal)}}>모달</button>
 
       {/* <button onClick={ ()=> { 누른제목변경(0) }}>버튼1</button>
       <button onClick={ ()=> { 누른제목변경(1) }}>버튼2</button>
