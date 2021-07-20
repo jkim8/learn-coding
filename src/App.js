@@ -94,6 +94,8 @@ function App(){
       <button onClick={ ()=> { 누른제목변경(2) }}>버튼3</button> */}
 
 
+      <Profile/>
+
        {
          modal === true 
          ? <Modal 글제목={글제목} 누른제목={누른제목}/>
@@ -114,5 +116,40 @@ function Modal(props) {
     </div> 
   )
 }
+
+
+class Profile extends React.Component {
+  constructor() {
+    super()
+    this.state = { name : 'Kim', age : 33 }
+  }
+
+  changeName = () => {
+    this.setState({name: 'Park'})
+  }
+
+    render(){
+      return (
+        <div>
+          <h3>프로필입니다.</h3>
+          <p>저는 {this.state.name}입니다</p>
+          <button onClick={ this.changeName } >버튼</button>
+        </div>
+      )
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default App;
